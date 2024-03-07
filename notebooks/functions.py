@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 def extract_data(xml_root_element):
 
     """ Function to extract the data from the first tag of the XML file string, contained in the main root (Response). It returns a dictionary 
@@ -10,12 +13,12 @@ def extract_data(xml_root_element):
         data[child.tag] = child.text
     return data  
 
-def create_dataframe(first_tag:str):
+def create_dataframe(root, first_tag:str):
     """ The function creates a dataframe from XLM files from which the data were extracted with extract_data() function.
     As argument it takes the first tag (string) within the root that incorporates all the elements associated"""
     df_rows = []
     for x in root.findall(first_tag):
-        df_rows.append(fun.extract_data(x))
+        df_rows.append(extract_data(x))
 
     df = pd.DataFrame(df_rows)
 
@@ -23,13 +26,17 @@ def create_dataframe(first_tag:str):
 
 def drop_col(df):
     """The functon drops any column containing all null values and specific columns not needed for the analysis"""
-    
-    df.dropna(how="all", inplace = True)
-    df.drop(["Unnamed: 0", "donor--id", "donor--name", "donor--race", "donor--species", "threshold-i-long-square", "fast-trough-v-long-square",
-             "peak-t-ramp", "tau", "upstroke-downstroke-ratio-long-square", "ephys-inst-thresh-thumb-path", "erwkf--id", "m--biophys-perisomatic",
-             "m--glif", "nr--average-contraction", "nr--average-parent-daughter-ratio", "nr--number-stems", "specimen--id", "structure--acronym", 
-             "tag--apical"], axis = 1, inplace = True)
-    return df
+    df.dropna(how="all", axis = 1, inplace = True)
+    df.drop(["Unnamed: 0", "donor--id", "donor--name", "donor--race", "donor--species", "threshold-i-long-square", 
+             "fast-trough-v-long-square", "peak-t-ramp", "tau", "upstroke-downstroke-ratio-long-square", 
+             "ephys-inst-thresh-thumb-path", "ephys-thumb-path", "erwkf--id", "m--biophys-perisomatic",
+             "m--glif", "nr--max-euclidean-distance", "nr--average-contraction", 
+             "nr--average-parent-daughter-ratio", "nr--number-stems", "specimen--hemisphere",
+             "specimen--id", "specimen--name", "structure--acronym", "structure-parent--acronym", 
+             "structure-parent--id", "tag--apical", "donor--years-of-seizure-history", "si--path",
+             "si--height", "nrwkf--id", "si--width", "m--biophys-all-active", "morph-thumb-path", "nr--reconstruction-type",
+            "m--biophys", "m--biophys-all-active"], axis = 1, inplace = True)
+    return df   
 
 def rename_ef(df):
     """Function that renames the column starting with ef-- (=electrophysiology), by removing ef--"""

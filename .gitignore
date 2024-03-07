@@ -6,3 +6,5 @@ requirements-dev.in
 Project_1_requirements.pptx
 Rubric.env
 brain atlas coordinates.pdf
+__pycache__
+figures
