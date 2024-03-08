@@ -1,8 +1,8 @@
 Project_1_README
 
 1. Datasets on neuronal cell types in the human brain (electrophysiology and morphology data)
-2. There are two main datasets in one, regarding human brain: all human cells (donor__species = "homo sapiens", so neurons cominf from either tumor or epilepsy patients) and human cells from epilepsy patients (donor__disease_state = "epilepsy")
-3. I extraced the dataset with the provided API and instructions (RMA quesries and criteria). T
+2. There are two main datasets regarding human brain cells, regarding human brain: all human cells (donor__species = "homo sapiens", so neurons coming from either tumor or epilepsy patients) and human cells from epilepsy patients (donor__disease_state = "epilepsy")
+3. I extraced the dataset with the provided API and instructions (RMA quesries and criteria) (URL: https://community.brain-map.org/t/cell-types-database-api/3016). T
 4. I will then to compare the different parameters regarding neuronal activity and morphology between the two conditions, brain tumor and epilepsy.
 
 - The dataset is extracted with two functions that are defined and saved in the file "functions.py" (details below)
