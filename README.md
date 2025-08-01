@@ -15,12 +15,12 @@ API Documentation: [Allen Institute API](https://community.brain-map.org/t/cell-
 
 ## Project Structure
 
-data/
+`data/
 ├── raw_data.csv # Raw extracted dataset
     └── cleaned_data.csv # Cleaned and formatted dataset
 functions.py # Custom functions for API querying and preprocessing
 project_notebook.ipynb # Full EDA, visualization, and analysis
-README.md
+README.md`
 
 ## Tools & Libraries
 
